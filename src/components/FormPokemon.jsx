@@ -11,13 +11,6 @@ const FormPokemon = ({ submit, isLoading }) => {
     const { register, handleSubmit } = useForm();
     const [filteredArray, setFilteredArray] = useState(null);
 
-    const { data: pokemons, isLoading: isLoadingPokemon } = useQuery({
-        queryKey: ['pokemon'],
-        queryFn: async () => {
-            const res = await axios.post('/api/pokemon/filter', { filteredArray });
-            return res.data;
-        }
-    })
     const { data: typesList, isLoading: isTypeLoading } = useQuery({
         queryKey: ['types'],
         queryFn: async () => {
